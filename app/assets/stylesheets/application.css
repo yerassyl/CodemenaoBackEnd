@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+html,body {
+    height: 100%;
+    overflow: hidden;
+}
+#blocklyDiv {
+    width: 100%;
+    height: 100%;
+}
