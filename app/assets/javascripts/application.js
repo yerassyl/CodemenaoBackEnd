@@ -15,9 +15,10 @@
 //= require turbolinks
 //= require_tree .
 
-var runCodeBtn = $('.runCodeBtn');
+
 
 function runCode(){
     // convert blocks code into Python
-
+    var code = Blockly.Python.workspaceToCode(workspace);
+    alert(code);
 }

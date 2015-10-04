@@ -1,8 +1,10 @@
 <div id="blocklyDiv"></div>
+
 <script>
     var toolbox = '<xml>';
-    toolbox += '  <block type="controls_if"></block>';
-    toolbox += '  <block type="controls_whileUntil"></block>';
+    toolbox += ' <block type="move_forward" ></block>'
+    toolbox += ' <block type="turn_left" ></block>';
+    toolbox += ' <block type="turn_right" ></block>';
     toolbox += '</xml>';
     var workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
 </script>
