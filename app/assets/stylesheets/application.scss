@@ -19,5 +19,27 @@ html,body {
 }
 #blocklyDiv {
     width: 100%;
-    height: 100%;
+    height: 90%;
+}
+.col-2 {
+  width:17%;
+  float:left;
+}
+.col-8 {
+  width: 80%;
+  float:left;
+}
+
+.runCodeBtn {
+  border:none;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #3dd16c;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.runCodeBtn:hover {
+  text-decoration: none;
 }

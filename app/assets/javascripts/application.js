@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var runCodeBtn = $('.runCodeBtn');
+
+function runCode(){
+    // convert blocks code into Python
+
+}
