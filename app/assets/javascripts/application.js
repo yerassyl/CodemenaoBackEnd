@@ -15,8 +15,6 @@
 //= require turbolinks
 //= require_tree .
 
-
-
 function runCode(){
     // convert blocks code into Python
     var code = Blockly.Python.workspaceToCode(workspace);
