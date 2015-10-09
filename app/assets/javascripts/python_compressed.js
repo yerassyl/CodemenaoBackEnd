@@ -74,8 +74,3 @@ Blockly.Python.text_prompt_ext=function(a){var b=Blockly.Python.provideFunction_
 Blockly.Python.text_prompt=Blockly.Python.text_prompt_ext;Blockly.Python.variables={};Blockly.Python.variables_get=function(a){return[Blockly.Python.variableDB_.getName(a.getFieldValue("VAR"),Blockly.Variables.NAME_TYPE),Blockly.Python.ORDER_ATOMIC]};Blockly.Python.variables_set=function(a){var b=Blockly.Python.valueToCode(a,"VALUE",Blockly.Python.ORDER_NONE)||"0";return Blockly.Python.variableDB_.getName(a.getFieldValue("VAR"),Blockly.Variables.NAME_TYPE)+" = "+b+"\n"};
 
 // here are python function codes for each blocks defined in block.js
-Blockly.Python['move_forward'] = function(block) {
-    // TODO: Assemble Python into code variable.
-    var code = 'print "hello word"\n';
-    return code;
-};
