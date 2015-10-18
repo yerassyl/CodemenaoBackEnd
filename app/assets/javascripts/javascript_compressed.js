@@ -82,11 +82,14 @@ Blockly.JavaScript.text_prompt=Blockly.JavaScript.text_prompt_ext;Blockly.JavaSc
 
 
 Blockly.JavaScript['move_forward'] = function(block) {
-
-    // Establish socket connection to NAO
-
-    Android.showToast("move forward ");
-    return code;
+    return "1";
+};
+Blockly.JavaScript['turn_left'] = function(block) {
+    return "2";
+};
+Blockly.JavaScript['turn_right'] = function(block) {
+    return "3";
 };
 
-// function for establishing socket connection with nao
+
+
