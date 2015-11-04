@@ -92,6 +92,7 @@ Blockly.JavaScript['turn_right'] = function(block) {
 };
 Blockly.JavaScript['while'] = function(block) {
     var statements_while = Blockly.JavaScript.statementToCode(block, 'While');
+    alert(statements_while);
     return statements_while;
 };
 
