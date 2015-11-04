@@ -90,6 +90,10 @@ Blockly.JavaScript['turn_left'] = function(block) {
 Blockly.JavaScript['turn_right'] = function(block) {
     return "3";
 };
+Blockly.JavaScript['while'] = function(block) {
+    var statements_while = Blockly.JavaScript.statementToCode(block, 'While');
+    return statements_while;
+};
 
 
 

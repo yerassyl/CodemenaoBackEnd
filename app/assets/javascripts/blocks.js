@@ -38,3 +38,14 @@ Blockly.Blocks['turn_right'] = {
         this.setHelpUrl('http://www.example.com/');
     }
 };
+
+Blockly.Blocks['while'] = {
+    init: function() {
+        this.appendStatementInput("While")
+            .appendField("While not")
+            .appendField(new Blockly.FieldImage("https://cdn0.iconfinder.com/data/icons/transportation-pack/512/13-512.png", 15, 15, "*"));
+        this.setColour(120);
+        this.setTooltip('');
+        this.setHelpUrl('http://www.example.com/');
+    }
+};
