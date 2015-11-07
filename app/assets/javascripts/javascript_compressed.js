@@ -80,8 +80,10 @@ Blockly.JavaScript.text_changeCase=function(a){var b={UPPERCASE:".toUpperCase()"
 Blockly.JavaScript.text_print=function(a){return"window.alert("+(Blockly.JavaScript.valueToCode(a,"TEXT",Blockly.JavaScript.ORDER_NONE)||"''")+");\n"};Blockly.JavaScript.text_prompt_ext=function(a){var b="window.prompt("+(a.getField("TEXT")?Blockly.JavaScript.quote_(a.getFieldValue("TEXT")):Blockly.JavaScript.valueToCode(a,"TEXT",Blockly.JavaScript.ORDER_NONE)||"''")+")";"NUMBER"==a.getFieldValue("TYPE")&&(b="parseFloat("+b+")");return[b,Blockly.JavaScript.ORDER_FUNCTION_CALL]};
 Blockly.JavaScript.text_prompt=Blockly.JavaScript.text_prompt_ext;Blockly.JavaScript.variables={};Blockly.JavaScript.variables_get=function(a){return[Blockly.JavaScript.variableDB_.getName(a.getFieldValue("VAR"),Blockly.Variables.NAME_TYPE),Blockly.JavaScript.ORDER_ATOMIC]};Blockly.JavaScript.variables_set=function(a){var b=Blockly.JavaScript.valueToCode(a,"VALUE",Blockly.JavaScript.ORDER_ASSIGNMENT)||"0";return Blockly.JavaScript.variableDB_.getName(a.getFieldValue("VAR"),Blockly.Variables.NAME_TYPE)+" = "+b+";\n"};
 
-// Function Implementations
+// DO NOT TOUCH COMPRESSED CODE ABOVE!
 
+
+// Function Implementations
 Blockly.JavaScript['move_forward'] = function(block) {
     return "1";
 };
@@ -123,9 +125,26 @@ Blockly.JavaScript['controls_repeat_ext'] = function(block) {
 Blockly.JavaScript['controls_repeat'] =
     Blockly.JavaScript['controls_repeat_ext'];
 
+Blockly.JavaScript['controls_whileUntil'] = function(block) {
+    // Do while/until loop.
+    var until = block.getFieldValue('MODE') == 'UNTIL';
+    var argument0 = Blockly.JavaScript.valueToCode(block, 'BOOL',
+            until ? Blockly.JavaScript.ORDER_LOGICAL_NOT :
+                Blockly.JavaScript.ORDER_NONE) || 'false';
+    var branch = Blockly.JavaScript.statementToCode(block, 'DO');
+    branch = Blockly.JavaScript.addLoopTrap(branch, block.id);
+    if (until) {
+        argument0 = '!' + argument0;
+    }
+    var code = 'while (' + argument0 + ') {\n' + branch + '}\n';
+    alert(code);
+    return 'while (' + argument0 + ') {\n' + branch + '}\n';
+};
 
-Blockly.JavaScript['while'] = function(block) {
+
+Blockly.JavaScript['while_not_finished'] = function(block) {
     var statements_while = Blockly.JavaScript.statementToCode(block, 'While');
+
     alert(statements_while);
     return statements_while;
 };

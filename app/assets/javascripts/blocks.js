@@ -5,12 +5,12 @@ goog.provide('Blockly.Blocks.loops');
 
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks.loops.HUE = 120;
+Blockly.Blocks.loops.HUE = 230;
 // MoveForward
 Blockly.Blocks['move_forward'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField("Move forward");
+            .appendField("Идти Вперед");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour(120);
@@ -23,10 +23,10 @@ Blockly.Blocks['move_forward'] = {
 Blockly.Blocks['turn_left'] = {
 init: function() {
     this.appendDummyInput()
-        .appendField("Turn left");
+        .appendField("Повернуть на лево");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(120);
+    this.setColour(20);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
 }
@@ -36,25 +36,26 @@ init: function() {
 Blockly.Blocks['turn_right'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField("Turn Right");
+            .appendField("Повернуть на право");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setColour(120);
+        this.setColour(20);
         this.setTooltip('');
         this.setHelpUrl('http://www.example.com/');
     }
 };
 
-Blockly.Blocks['while'] = {
+Blockly.Blocks['while_not_finished'] = {
     init: function() {
         this.appendStatementInput("While")
-            .appendField("While not")
+            .appendField("Повторять пока не")
             .appendField(new Blockly.FieldImage("https://cdn0.iconfinder.com/data/icons/transportation-pack/512/13-512.png", 15, 15, "*"));
-        this.setColour(120);
+        this.setColour(230);
         this.setTooltip('');
         this.setHelpUrl('http://www.example.com/');
     }
 };
+
 Blockly.Blocks['controls_repeat'] = {
     /**
      * Block for repeat n times (internal number).
@@ -82,6 +83,38 @@ Blockly.Blocks['controls_repeat'] = {
         this.getField('TIMES').setChangeHandler(
             Blockly.FieldTextInput.nonnegativeIntegerValidator);
 
+    }
+};
+
+// while loop
+Blockly.Blocks['controls_whileUntil'] = {
+    /**
+     * Block for 'do while/until' loop.
+     * @this Blockly.Block
+     */
+    init: function() {
+        var OPERATORS =
+            [[Blockly.Msg.CONTROLS_WHILEUNTIL_OPERATOR_WHILE, 'WHILE'],
+                [Blockly.Msg.CONTROLS_WHILEUNTIL_OPERATOR_UNTIL, 'UNTIL']];
+        this.setHelpUrl(Blockly.Msg.CONTROLS_WHILEUNTIL_HELPURL);
+        this.setColour(Blockly.Blocks.loops.HUE);
+        this.appendValueInput('BOOL')
+            .setCheck('Boolean')
+            .appendField(new Blockly.FieldDropdown(OPERATORS), 'MODE');
+        this.appendStatementInput('DO')
+            .appendField(Blockly.Msg.CONTROLS_WHILEUNTIL_INPUT_DO);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        // Assign 'this' to a variable for use in the tooltip closure below.
+        var thisBlock = this;
+        this.setTooltip(function() {
+            var op = thisBlock.getFieldValue('MODE');
+            var TOOLTIPS = {
+                'WHILE': Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_WHILE,
+                'UNTIL': Blockly.Msg.CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL
+            };
+            return TOOLTIPS[op];
+        });
     }
 };
 

@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require websocket_rails/main
 //= require_tree .
-
 function runCode(){
     // convert blocks code into Python
     var code = Blockly.JavaScript.workspaceToCode(workspace);
