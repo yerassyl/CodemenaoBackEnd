@@ -18,7 +18,7 @@
 function runCode(){
     // convert blocks code into Python
     var code = Blockly.JavaScript.workspaceToCode(workspace);
-    Android.showToast(code); // send code to android
+    Android.sendToNao(code); // send code to android
     alert(code);
 }
 
