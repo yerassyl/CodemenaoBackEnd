@@ -4,7 +4,6 @@ class MazeLevelsController < ApplicationController
   # GET /maze_levels
   # GET /maze_levels.json
   def index
-
   end
 
   # GET /maze_levels/1
@@ -69,6 +68,6 @@ class MazeLevelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def maze_level_params
-      params[:maze_level]
+      params[:maze_level].permit(:start_posH,:start_posV,:finish_posH, :finish_posV)
     end
 end

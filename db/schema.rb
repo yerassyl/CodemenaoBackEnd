@@ -17,8 +17,13 @@ ActiveRecord::Schema.define(version: 20151002093910) do
   enable_extension "plpgsql"
 
   create_table "maze_levels", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "maze_level"
+    t.integer  "start_posH"
+    t.integer  "start_posV"
+    t.integer  "finish_posH"
+    t.integer  "finish_posV"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
