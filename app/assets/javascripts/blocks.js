@@ -23,7 +23,7 @@ Blockly.Blocks['move_forward'] = {
 Blockly.Blocks['turn_left'] = {
 init: function() {
     this.appendDummyInput()
-        .appendField("Повернуть на лево");
+        .appendField("Повернуть налево");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(20);
@@ -36,7 +36,7 @@ init: function() {
 Blockly.Blocks['turn_right'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField("Повернуть на право");
+            .appendField("Повернуть направо");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setColour(20);
