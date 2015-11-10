@@ -56,7 +56,7 @@ Blockly.Blocks['while_not_finished'] = {
     }
 };
 
-Blockly.Blocks['controls_repeat'] = {
+Blockly.Blocks['controls_repeat_3'] = {
     /**
      * Block for repeat n times (internal number).
      * The 'controls_repeat_ext' block is preferred as it is more flexible.
@@ -69,7 +69,37 @@ Blockly.Blocks['controls_repeat'] = {
                 {
                     "type": "field_input",
                     "name": "TIMES",
-                    "text": "10"
+                    "text": "3"
+                }
+            ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour": Blockly.Blocks.loops.HUE,
+            "tooltip": Blockly.Msg.CONTROLS_REPEAT_TOOLTIP,
+            "helpUrl": Blockly.Msg.CONTROLS_REPEAT_HELPURL
+        });
+        this.appendStatementInput('DO')
+            .appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+        this.getField('TIMES').setChangeHandler(
+            Blockly.FieldTextInput.nonnegativeIntegerValidator);
+
+    }
+};
+
+Blockly.Blocks['controls_repeat_2'] = {
+    /**
+     * Block for repeat n times (internal number).
+     * The 'controls_repeat_ext' block is preferred as it is more flexible.
+     * @this Blockly.Block
+     */
+    init: function() {
+        this.jsonInit({
+            "message0": Blockly.Msg.CONTROLS_REPEAT_TITLE,
+            "args0": [
+                {
+                    "type": "field_input",
+                    "name": "TIMES",
+                    "text": "2"
                 }
             ],
             "previousStatement": null,
