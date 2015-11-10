@@ -95,7 +95,62 @@ Blockly.JavaScript['turn_right'] = function(block) {
 };
 
 // include loops
-Blockly.JavaScript['controls_repeat_ext'] = function(block) {
+Blockly.JavaScript['controls_repeat_3'] = function(block) {
+    // Repeat n times.
+    if (block.getField('TIMES')) {
+        // Internal number.
+        var repeats = String(Number(block.getFieldValue('TIMES')));
+    } else {
+        // External number.
+        var repeats = Blockly.JavaScript.valueToCode(block, 'TIMES',
+                Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
+    }
+    var branch = Blockly.JavaScript.statementToCode(block, 'DO');
+    branch = Blockly.JavaScript.addLoopTrap(branch, block.id);
+    var code = '';
+    var loopVar = Blockly.JavaScript.variableDB_.getDistinctName(
+        'count', Blockly.Variables.NAME_TYPE);
+    var endVar = repeats;
+    if (!repeats.match(/^\w+$/) && !Blockly.isNumber(repeats)) {
+        var endVar = Blockly.JavaScript.variableDB_.getDistinctName(
+            'repeat_end', Blockly.Variables.NAME_TYPE);
+        code += 'var ' + endVar + ' = ' + repeats + ';\n';
+    }
+    branch = branch.trim();
+    for(var i=0;i<endVar;i++){
+        code = code+branch;
+    }
+    return code;
+};
+
+Blockly.JavaScript['controls_repeat_3'] = function(block) {
+    // Repeat n times.
+    if (block.getField('TIMES')) {
+        // Internal number.
+        var repeats = String(Number(block.getFieldValue('TIMES')));
+    } else {
+        // External number.
+        var repeats = Blockly.JavaScript.valueToCode(block, 'TIMES',
+                Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
+    }
+    var branch = Blockly.JavaScript.statementToCode(block, 'DO');
+    branch = Blockly.JavaScript.addLoopTrap(branch, block.id);
+    var code = '';
+    var loopVar = Blockly.JavaScript.variableDB_.getDistinctName(
+        'count', Blockly.Variables.NAME_TYPE);
+    var endVar = repeats;
+    if (!repeats.match(/^\w+$/) && !Blockly.isNumber(repeats)) {
+        var endVar = Blockly.JavaScript.variableDB_.getDistinctName(
+            'repeat_end', Blockly.Variables.NAME_TYPE);
+        code += 'var ' + endVar + ' = ' + repeats + ';\n';
+    }
+    branch = branch.trim();
+    for(var i=0;i<endVar;i++){
+        code = code+branch;
+    }
+    return code;
+};
+Blockly.JavaScript['controls_repeat_2'] = function(block) {
     // Repeat n times.
     if (block.getField('TIMES')) {
         // Internal number.
@@ -123,7 +178,12 @@ Blockly.JavaScript['controls_repeat_ext'] = function(block) {
     return code;
 };
 Blockly.JavaScript['controls_repeat'] =
-    Blockly.JavaScript['controls_repeat_ext'];
+    Blockly.JavaScript['controls_repeat_3'];
+
+Blockly.JavaScript['controls_repeat'] =
+    Blockly.JavaScript['controls_repeat_2'];
+
+
 
 Blockly.JavaScript['controls_whileUntil'] = function(block) {
     // Do while/until loop.
