@@ -18,9 +18,9 @@
 function runCode(){
     // convert blocks code into Python
     var code = Blockly.JavaScript.workspaceToCode(workspace);
-    //Android.sendToNao(code); // send code to android
+    Android.sendToNao(code); // send code to android
     // block button
-    alert(code);
+    //alert(code);
     $('.runCodeBtn').hide();
 }
 function showRunBtn(){
