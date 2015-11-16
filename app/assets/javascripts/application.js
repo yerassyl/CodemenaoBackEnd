@@ -20,12 +20,18 @@ function backToGame(){
     $('.runCodeBtn').show();
     $('.clearEditor').show();
     $('.congrats').hide();
-    Blockly.mainWorkspace.clear();
 }
 function clearEditor(){
     Blockly.mainWorkspace.clear();
 }
 
+function storeTimeSpent(timeSpent, isLevelPassed){
+    if (isLevelPassed==1){
+        alert("level is passed with "+timeSpent+"seconds");
+    }else {
+
+    }
+}
 
 $(document).on('ready', function(){
     var runCodeBtn = $('.runCodeBtn');
