@@ -27,3 +27,7 @@ function showRunBtn(){
     $('.runCodeBtn').show();
 }
 
+function clearEditor(){
+    Blockly.mainWorkspace.clear();
+}
+
