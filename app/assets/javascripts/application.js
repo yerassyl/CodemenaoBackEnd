@@ -20,6 +20,7 @@ function backToGame(){
     $('.runCodeBtn').show();
     $('.clearEditor').show();
     $('.congrats').hide();
+    Blockly.mainWorkspace.clear();
 }
 function clearEditor(){
     Blockly.mainWorkspace.clear();
@@ -39,7 +40,6 @@ $(document).on('ready', function(){
         // convert blocks code into Python
         var code = Blockly.JavaScript.workspaceToCode(workspace);
         Android.sendToNao(code, timeSpent ); // send code to android
-        alert(timeSpent);
         runCodeBtn.hide();
         clearEditor.hide();
         congrats.show();
