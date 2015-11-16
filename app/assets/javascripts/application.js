@@ -15,19 +15,33 @@
 //= require turbolinks
 //= require websocket_rails/main
 //= require_tree .
-function runCode(){
-    // convert blocks code into Python
-    var code = Blockly.JavaScript.workspaceToCode(workspace);
-    Android.sendToNao(code); // send code to android
-    // block button
-    //alert(code);
-    $('.runCodeBtn').hide();
-}
-function showRunBtn(){
-    $('.runCodeBtn').show();
-}
 
+function backToGame(){
+    $('.runCodeBtn').show();
+    $('.clearEditor').show();
+    $('.congrats').hide();
+}
 function clearEditor(){
     Blockly.mainWorkspace.clear();
 }
 
+
+$(document).on('ready', function(){
+    var runCodeBtn = $('.runCodeBtn');
+    var clearEditor = $('.clearEditor');
+    var congrats = $('.congrats');
+    var startTime = Date.now();
+
+    congrats.hide();
+
+    runCodeBtn.on('click', function(){
+        var timeSpent = Math.floor( (Date.now()-startTime)/1000);
+        // convert blocks code into Python
+        var code = Blockly.JavaScript.workspaceToCode(workspace);
+        Android.sendToNao(code, timeSpent ); // send code to android
+        alert(timeSpent);
+        runCodeBtn.hide();
+        clearEditor.hide();
+        congrats.show();
+    });
+});
